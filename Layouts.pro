@@ -1,4 +1,6 @@
-QT       += core gui
+QT       += core gui  sql\
+         multimedia
+
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -9,7 +11,10 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    fuelitem.cpp \
+    gameover.cpp \
     heliitem.cpp \
+    highscore.cpp \
     main.cpp \
     mainwindow.cpp \
     newwindow.cpp \
@@ -17,13 +22,18 @@ SOURCES += \
     scene.cpp
 
 HEADERS += \
+    fuelitem.h \
+    gameover.h \
     heliitem.h \
+    highscore.h \
     mainwindow.h \
     newwindow.h \
     pillaritem.h \
     scene.h
 
 FORMS += \
+    gameover.ui \
+    highscore.ui \
     mainwindow.ui \
     newwindow.ui
 

@@ -1,5 +1,7 @@
 #include "heliitem.h"
 #include <QTimer>
+#include <QGraphicsScene>
+#include "fuelitem.h"
 HeliItem::HeliItem(QPixmap pixmap):
     wingPosition(WingPosition::Up),
     wingDirection(0)
@@ -14,18 +16,18 @@ HeliItem::HeliItem(QPixmap pixmap):
 
     heliWingsTimer->start(80);
 
-    groundPosition = scenePos().y() + 290;
+    groundPosition = scenePos().y() + 150 ;
 
     yAnimation = new QPropertyAnimation(this,"y",this);
     yAnimation->setStartValue(scenePos().y());
     yAnimation->setEndValue(groundPosition);
     yAnimation->setEasingCurve(QEasingCurve::InQuad);
     yAnimation->setDuration(1000);
-    yAnimation->start();
+   // yAnimation->start();
 
 
        rotationAnimation = new QPropertyAnimation(this,"rotation",this);
-       rotateTo(90,1200,QEasingCurve::InQuad);
+      // rotateTo(90,1200,QEasingCurve::InQuad);
 
 
 
@@ -84,9 +86,65 @@ void HeliItem::rotateTo(const qreal &end, const int &duration, const QEasingCurv
     rotationAnimation->start();
 }
 
+void HeliItem::fallToGroundIfNecessary()
+{
+    if (y() < groundPosition){
+
+        rotationAnimation->stop();
+        yAnimation->stop();
+
+        yAnimation->setStartValue(y());
+        yAnimation->setEasingCurve(QEasingCurve::InQuad);
+        yAnimation->setEndValue(1200);
+        yAnimation->setDuration(1000);
+        yAnimation->start();
+
+        rotateTo(60,110,QEasingCurve::InCubic);
+    }
+}
+
 
 void HeliItem::setY(qreal y)
 {
     moveBy(0,y-m_y);
     m_y = y;
 }
+
+void HeliItem::shootUP()
+{
+    yAnimation->stop();
+    rotationAnimation->stop();
+
+    qreal curPosY = y();
+
+    yAnimation->setStartValue(curPosY);
+    yAnimation->setEndValue(curPosY - scene()->sceneRect().height()/8);
+    yAnimation->setEasingCurve(QEasingCurve::OutQuad);
+    yAnimation->setDuration(285);
+
+    connect(yAnimation,&QPropertyAnimation::finished,[=](){
+
+        fallToGroundIfNecessary();
+
+    });
+
+    yAnimation->start();
+
+    rotateTo(-20,200,QEasingCurve::OutCubic);
+
+
+}
+
+void HeliItem::startFlying()
+{
+    yAnimation->start();
+    rotateTo(90,1200,QEasingCurve::InQuad);
+}
+
+void HeliItem::freezeInPlace()
+{
+    yAnimation->stop();
+    rotationAnimation->stop();
+}
+
+

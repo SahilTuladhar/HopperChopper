@@ -17,6 +17,10 @@ public:
     qreal y() const;
     void setY(qreal newY);
 
+    void shootUP();
+    void startFlying();
+    void freezeInPlace();
+
 signals:
 
 public slots:
@@ -24,6 +28,7 @@ public slots:
 
     void rotateTo(const qreal &end , const int& duration, const QEasingCurve& curve);
 
+    void fallToGroundIfNecessary();
 private:
     enum WingPosition {
         Up,
@@ -34,7 +39,7 @@ private:
    WingPosition wingPosition;
    bool wingDirection; // 0:down , 1:up
 
-
+    bool collidesWithFuel();
    qreal m_rotation;
    qreal m_y;
    QPropertyAnimation * yAnimation;

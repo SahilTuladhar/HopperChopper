@@ -6,15 +6,36 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1156</width>
-    <height>624</height>
+    <width>1163</width>
+    <height>633</height>
    </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1163</width>
+    <height>633</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1163</width>
+    <height>633</height>
+   </size>
   </property>
   <property name="font">
    <font/>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
+  </property>
+  <property name="autoFillBackground">
+   <bool>true</bool>
   </property>
   <property name="animated">
    <bool>true</bool>
@@ -23,31 +44,42 @@
    <widget class="QWidget" name="verticalLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>370</x>
+      <x>360</x>
       <y>380</y>
       <width>371</width>
-      <height>121</height>
+      <height>149</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
       <widget class="QPushButton" name="pushButton_2">
-       <property name="text">
-        <string>Start Game</string>
+       <property name="styleSheet">
+        <string notr="true">#pushButton_2{
+
+border-image: url(:/images/Startgame.png);
+height:70px;
+}
+
+</string>
        </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="pushButton_3">
        <property name="text">
-        <string>Highscore</string>
+        <string/>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QPushButton" name="pushButton">
+       <property name="styleSheet">
+        <string notr="true">#pushButton{
+
+border-image: url(:/images/ExitGame.png);
+height:70px;
+}
+
+</string>
+       </property>
        <property name="text">
-        <string>Exit Game</string>
+        <string/>
        </property>
       </widget>
      </item>
@@ -56,7 +88,7 @@
    <widget class="QLabel" name="label_pic">
     <property name="geometry">
      <rect>
-      <x>450</x>
+      <x>430</x>
       <y>160</y>
       <width>231</width>
       <height>201</height>
@@ -66,14 +98,91 @@
      <string/>
     </property>
    </widget>
+   <widget class="QPushButton" name="pushButton_3">
+    <property name="geometry">
+     <rect>
+      <x>1000</x>
+      <y>80</y>
+      <width>111</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#pushButton_3{
+
+border-image: url(:/images/Highscore.png);
+height:100px;
+}
+
+</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QTableView" name="thighscore">
+    <property name="geometry">
+     <rect>
+      <x>995</x>
+      <y>10</y>
+      <width>131</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#thighscore{
+	
+	text-color:white;
+}</string>
+    </property>
+   </widget>
+   <widget class="QGraphicsView" name="graphicsView">
+    <property name="geometry">
+     <rect>
+      <x>5</x>
+      <y>-19</y>
+      <width>1163</width>
+      <height>633</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>1163</width>
+      <height>633</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>1163</width>
+      <height>633</height>
+     </size>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#graphicsView{
+background-color:rgba(0,22,34,255);
+
+}</string>
+    </property>
+   </widget>
+   <zorder>graphicsView</zorder>
+   <zorder>verticalLayoutWidget</zorder>
+   <zorder>thighscore</zorder>
+   <zorder>pushButton_3</zorder>
+   <zorder>label_pic</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1156</width>
-     <height>24</height>
+     <width>1163</width>
+     <height>26</height>
     </rect>
    </property>
   </widget>

@@ -16,12 +16,19 @@ public:
     qreal x() const;
     void setX(qreal newX);
 
+    void freezeInPlace();
+
+signals:
+    void collideFail();
+
 private:
+    bool collidesWithHeli();
     QGraphicsPixmapItem *topPillar;
     QGraphicsPixmapItem * bottomPillar;
     QPropertyAnimation *xAnimation;
     int yPos;
     qreal m_x;
+    bool pastHeli;
 };
 
 #endif // PILLARITEM_H
